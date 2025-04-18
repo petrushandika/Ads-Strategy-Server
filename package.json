@@ -1,0 +1,30 @@
+{
+  "name": "ads-strategy-server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/petrushandika/Ads-Strategy-Server#readme",
+  "bugs": {
+    "url": "https://github.com/petrushandika/Ads-Strategy-Server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petrushandika/Ads-Strategy-Server.git"
+  },
+  "license": "ISC",
+  "author": "petrushandika",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "prisma": "^6.6.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  },
+  "keywords": []
+}
