@@ -1,0 +1,724 @@
+// This is your Prisma schema file
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User and authentication models
+model User {
+  id             String               @id @default(uuid())
+  email          String               @unique
+  password       String?
+  name           String?
+  role           UserRole             @default(USER)
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  metaAccounts   MetaAccount[]
+  socialAccounts SocialMediaAccount[]
+  campaigns      Campaign[]
+  adsets         AdSet[]
+  ads            Ad[]
+  schedules      Schedule[]
+  payments       Payment[]
+  invoices       Invoice[]
+  notifications  Notification[]
+  influencers    Influencer[]
+  clinics        Clinic[]
+  products       Product[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+// Meta Ads Manager integration
+model MetaAccount {
+  id             String      @id @default(uuid())
+  userId         String
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metaAccountId  String      @unique
+  accessToken    String
+  refreshToken   String?
+  tokenExpiresAt DateTime?
+  businessName   String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  campaigns      Campaign[]
+  adSets         AdSet[]
+  ads            Ad[]
+  adAccounts     AdAccount[]
+
+  @@map("meta_accounts")
+}
+
+model AdAccount {
+  id            String      @id @default(uuid())
+  metaAccountId String
+  metaAccount   MetaAccount @relation(fields: [metaAccountId], references: [id], onDelete: Cascade)
+  adAccountId   String      @unique // The Ad Account ID from Meta
+  name          String
+  currency      String
+  timezone      String
+  status        String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  campaigns     Campaign[]
+
+  @@map("ad_accounts")
+}
+
+// Campaign structure
+model Campaign {
+  id            String            @id @default(uuid())
+  userId        String
+  user          User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metaAccountId String?
+  metaAccount   MetaAccount?      @relation(fields: [metaAccountId], references: [id], onDelete: SetNull)
+  adAccountId   String?
+  adAccount     AdAccount?        @relation(fields: [adAccountId], references: [id], onDelete: SetNull)
+  campaignId    String? // Meta Campaign ID
+  name          String
+  objective     String
+  status        CampaignStatus
+  budget        Float?
+  budgetType    BudgetType?
+  startDate     DateTime?
+  endDate       DateTime?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  adSets        AdSet[]
+  tags          TagsOnCampaigns[]
+  metrics       CampaignMetrics[]
+  clinicId      String?
+  clinic        Clinic?           @relation(fields: [clinicId], references: [id], onDelete: SetNull)
+  productId     String?
+  product       Product?          @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@map("campaigns")
+}
+
+enum CampaignStatus {
+  ACTIVE
+  PAUSED
+  DELETED
+  COMPLETED
+  DRAFT
+}
+
+enum BudgetType {
+  DAILY
+  LIFETIME
+}
+
+model CampaignMetrics {
+  id            String   @id @default(uuid())
+  campaignId    String
+  campaign      Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  date          DateTime
+  impressions   Int      @default(0)
+  clicks        Int      @default(0)
+  reach         Int      @default(0)
+  spend         Float    @default(0)
+  conversions   Int      @default(0)
+  costPerResult Float?
+  ctr           Float? // Click-through rate
+  cpc           Float? // Cost per click
+  cpm           Float? // Cost per 1000 impressions
+  frequency     Float?
+
+  @@unique([campaignId, date])
+  @@map("campaign_metrics")
+}
+
+model AdSet {
+  id            String         @id @default(uuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  campaignId    String
+  campaign      Campaign       @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  metaAccountId String?
+  metaAccount   MetaAccount?   @relation(fields: [metaAccountId], references: [id], onDelete: SetNull)
+  adSetId       String? // Meta AdSet ID
+  name          String
+  status        AdSetStatus
+  budget        Float?
+  budgetType    BudgetType?
+  bidStrategy   String?
+  bidAmount     Float?
+  startDate     DateTime?
+  endDate       DateTime?
+  targeting     Json? // JSON structure for targeting options
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  ads           Ad[]
+  metrics       AdSetMetrics[]
+
+  @@map("ad_sets")
+}
+
+enum AdSetStatus {
+  ACTIVE
+  PAUSED
+  DELETED
+  DRAFT
+}
+
+model AdSetMetrics {
+  id            String   @id @default(uuid())
+  adSetId       String
+  adSet         AdSet    @relation(fields: [adSetId], references: [id], onDelete: Cascade)
+  date          DateTime
+  impressions   Int      @default(0)
+  clicks        Int      @default(0)
+  reach         Int      @default(0)
+  spend         Float    @default(0)
+  conversions   Int      @default(0)
+  costPerResult Float?
+  ctr           Float?
+  cpc           Float?
+  cpm           Float?
+  frequency     Float?
+
+  @@unique([adSetId, date])
+  @@map("ad_set_metrics")
+}
+
+model Ad {
+  id             String        @id @default(uuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  adSetId        String
+  adSet          AdSet         @relation(fields: [adSetId], references: [id], onDelete: Cascade)
+  metaAccountId  String?
+  metaAccount    MetaAccount?  @relation(fields: [metaAccountId], references: [id], onDelete: SetNull)
+  adId           String? // Meta Ad ID
+  name           String
+  status         AdStatus
+  headline       String?
+  description    String?
+  creativeType   CreativeType?
+  imageUrl       String?
+  videoUrl       String?
+  destinationUrl String?
+  callToAction   String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  metrics        AdMetrics[]
+  schedules      Schedule[]
+
+  @@map("ads")
+}
+
+enum AdStatus {
+  ACTIVE
+  PAUSED
+  DELETED
+  DRAFT
+  REVIEW
+  REJECTED
+}
+
+enum CreativeType {
+  IMAGE
+  VIDEO
+  CAROUSEL
+  COLLECTION
+  STORY
+  REEL
+}
+
+model AdMetrics {
+  id            String   @id @default(uuid())
+  adId          String
+  ad            Ad       @relation(fields: [adId], references: [id], onDelete: Cascade)
+  date          DateTime
+  impressions   Int      @default(0)
+  clicks        Int      @default(0)
+  reach         Int      @default(0)
+  spend         Float    @default(0)
+  conversions   Int      @default(0)
+  costPerResult Float?
+  ctr           Float?
+  cpc           Float?
+  cpm           Float?
+  frequency     Float?
+  engagements   Int      @default(0)
+  shares        Int      @default(0)
+  comments      Int      @default(0)
+  saves         Int      @default(0)
+
+  @@unique([adId, date])
+  @@map("ad_metrics")
+}
+
+// Scheduling and Planning
+model Schedule {
+  id         String             @id @default(uuid())
+  userId     String
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  adId       String?
+  ad         Ad?                @relation(fields: [adId], references: [id], onDelete: SetNull)
+  title      String
+  startDate  DateTime
+  endDate    DateTime
+  status     ScheduleStatus
+  priority   SchedulePriority   @default(STANDARD)
+  category   ScheduleCategory?
+  clinicId   String?
+  clinic     Clinic?            @relation(fields: [clinicId], references: [id], onDelete: SetNull)
+  productId  String?
+  product    Product?           @relation(fields: [productId], references: [id], onDelete: SetNull)
+  recurrence RecurrencePattern?
+  notes      String?
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+
+  @@map("schedules")
+}
+
+enum ScheduleStatus {
+  SCHEDULED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum SchedulePriority {
+  STANDARD
+  PRIORITY
+}
+
+enum ScheduleCategory {
+  PRODUCT
+  CLINIC
+  OTHER
+}
+
+enum RecurrencePattern {
+  NONE
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+// Ads Planner
+model AdsPlanner {
+  id               String            @id @default(uuid())
+  name             String // Campaign Name
+  description      String?
+  objective        CampaignObjective // Campaign Objective
+  budgetType       BudgetType
+  budgetAmount     Float // Budget Amount
+  whatsappNumber   String? // Whatsapp Number
+  startDate        DateTime // Start Date
+  endDate          DateTime // End Date
+  location         String? // Location
+  minAge           Int? // Min Age
+  maxAge           Int? // Max Age
+  gender           GenderTarget? // Gender
+  detailTargeting  String? // Detail Targeting
+  videoUrl         String? // Video URL
+  websiteUrl       String? // Website URL
+  primaryText      String? // Primary Text
+  headline         String? // Headline
+  ctaName          String? // CTA Name
+  ctaText          String? // CTA Text
+  preFilledMessage String? // Pre Filled Message
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  planItems        PlannerItem[]
+
+  @@map("ads_planners")
+}
+
+enum CampaignObjective {
+  TRAFFIC
+  LEADS
+  ENGAGEMENT
+  BRAND_AWARENESS
+  REACH
+  APP_INSTALLS
+  VIDEO_VIEWS
+  CONVERSIONS
+  CATALOG_SALES
+  STORE_TRAFFIC
+  MESSAGES
+}
+
+enum GenderTarget {
+  ALL
+  MEN
+  WOMEN
+}
+
+model PlannerItem {
+  id          String            @id @default(uuid())
+  plannerId   String
+  planner     AdsPlanner        @relation(fields: [plannerId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  platform    PlatformType
+  format      String?
+  budget      Float?
+  startDate   DateTime?
+  endDate     DateTime?
+  status      PlannerItemStatus @default(DRAFT)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@map("planner_items")
+}
+
+enum PlannerItemStatus {
+  DRAFT
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+// Social Media Metrics
+model SocialMediaAccount {
+  id                String              @id @default(uuid())
+  userId            String
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  platform          PlatformType
+  accountName       String
+  accountId         String?
+  followers         Int                 @default(0)
+  accessToken       String?
+  tokenExpiresAt    DateTime?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  platformMetrics   PlatformMetrics[]
+  engagementMetrics EngagementMetrics[]
+  influencers       Influencer[]
+
+  @@unique([userId, platform, accountName])
+  @@map("social_media_accounts")
+}
+
+enum PlatformType {
+  FACEBOOK
+  INSTAGRAM
+  TWITTER
+  LINKEDIN
+  TIKTOK
+  YOUTUBE
+  PINTEREST
+  SNAPCHAT
+  OTHER
+}
+
+model PlatformMetrics {
+  id            String             @id @default(uuid())
+  accountId     String
+  account       SocialMediaAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  date          DateTime
+  followers     Int                @default(0)
+  following     Int                @default(0)
+  posts         Int                @default(0)
+  impressions   Int                @default(0)
+  reach         Int                @default(0)
+  profileViews  Int                @default(0)
+  websiteClicks Int                @default(0)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  @@unique([accountId, date])
+  @@map("platform_metrics")
+}
+
+model EngagementMetrics {
+  id             String             @id @default(uuid())
+  accountId      String
+  account        SocialMediaAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  date           DateTime
+  likes          Int                @default(0)
+  comments       Int                @default(0)
+  shares         Int                @default(0)
+  saves          Int                @default(0)
+  clicks         Int                @default(0)
+  engagementRate Float?
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+
+  @@unique([accountId, date])
+  @@map("engagement_metrics")
+}
+
+model Influencer {
+  id             String                @id @default(uuid())
+  userId         String
+  user           User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId      String
+  account        SocialMediaAccount    @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  name           String
+  contactInfo    String?
+  reach          Int                   @default(0)
+  engagementRate Float?
+  niche          String?
+  cost           Float?
+  status         InfluencerStatus      @default(POTENTIAL)
+  notes          String?
+  createdAt      DateTime              @default(now())
+  updatedAt      DateTime              @updatedAt
+  campaigns      InfluencerCampaigns[]
+
+  @@map("influencers")
+}
+
+enum InfluencerStatus {
+  POTENTIAL
+  CONTACTED
+  ACTIVE
+  PREVIOUS
+  BLACKLISTED
+}
+
+model InfluencerCampaigns {
+  id           String                   @id @default(uuid())
+  influencerId String
+  influencer   Influencer               @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  name         String
+  startDate    DateTime
+  endDate      DateTime?
+  budget       Float
+  results      Json?
+  status       InfluencerCampaignStatus
+  createdAt    DateTime                 @default(now())
+  updatedAt    DateTime                 @updatedAt
+
+  @@map("influencer_campaigns")
+}
+
+enum InfluencerCampaignStatus {
+  PLANNED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+// Models for Clinic and Product
+model Clinic {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  address     String?
+  city        String?
+  phone       String?
+  email       String?
+  website     String?
+  description String?
+  featured    Boolean    @default(false) // For top 5 featured clinics
+  logoUrl     String?
+  rating      Float? // Rating out of 5
+  reviewCount Int        @default(0)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  schedules   Schedule[]
+  campaigns   Campaign[]
+
+  @@map("clinics")
+}
+
+model Product {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  description String?
+  price       Float?
+  sku         String?
+  imageUrl    String?
+  featured    Boolean    @default(false) // For top 5 featured products
+  category    String?
+  stock       Int?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  schedules   Schedule[]
+  campaigns   Campaign[]
+
+  @@map("products")
+}
+
+model Income {
+  id          String         @id @default(uuid())
+  source      String
+  amount      Float
+  description String?
+  date        DateTime
+  category    IncomeCategory
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@map("incomes")
+}
+
+enum IncomeCategory {
+  ADS_REVENUE
+  CLIENT_PAYMENT
+  AFFILIATE
+  OTHER
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount        Float
+  currency      String        @default("USD")
+  status        PaymentStatus
+  method        PaymentMethod
+  description   String?
+  transactionId String?
+  receiptUrl    String?
+  invoiceId     String?
+  invoice       Invoice?      @relation(fields: [invoiceId], references: [id])
+  date          DateTime      @default(now())
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("payments")
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  PAYPAL
+  BANK_TRANSFER
+  CRYPTO
+  OTHER
+}
+
+model Invoice {
+  id            String        @id @default(uuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invoiceNumber String        @unique
+  amount        Float
+  currency      String        @default("USD")
+  status        InvoiceStatus
+  dueDate       DateTime
+  issueDate     DateTime      @default(now())
+  description   String?
+  payments      Payment[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("invoices")
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+// ROAS Tracking
+model ROASMetrics {
+  id        String   @id @default(uuid())
+  date      DateTime
+  adSpend   Float    @default(0)
+  revenue   Float    @default(0)
+  roasValue Float? // Revenue / Ad Spend
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("roas_metrics")
+}
+
+// Conversion Tracking
+model ConversionMetrics {
+  id              String   @id @default(uuid())
+  date            DateTime
+  source          String?
+  medium          String?
+  campaign        String?
+  landingPage     String?
+  pageViews       Int      @default(0)
+  uniqueVisitors  Int      @default(0)
+  conversions     Int      @default(0)
+  conversionValue Float    @default(0)
+  conversionRate  Float?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("conversion_metrics")
+}
+
+// Tags for categorization
+model Tag {
+  id        String            @id @default(uuid())
+  name      String            @unique
+  color     String?
+  campaigns TagsOnCampaigns[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@map("tags")
+}
+
+model TagsOnCampaigns {
+  tagId      String
+  tag        Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  campaignId String
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  assignedAt DateTime @default(now())
+
+  @@id([tagId, campaignId])
+  @@map("tags_on_campaigns")
+}
+
+// Notifications
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      NotificationType
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@map("notifications")
+}
+
+enum NotificationType {
+  INFO
+  WARNING
+  ERROR
+  SUCCESS
+}
+
+// System settings
+model Setting {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("settings")
+}
