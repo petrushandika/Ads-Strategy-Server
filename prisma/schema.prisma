@@ -3,21 +3,21 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  // output   = "@prisma/client"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql" 
   url      = env("DATABASE_URL")
 }
 
 // User and authentication models
 model User {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   email             String              @unique
-  password          String?
-  name              String?
-  role              UserRole            @default(USER)
+  password          String
+  name              String
+  roles             Role[]              @default([USER])
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
   metaAccounts      MetaAccount[]
@@ -36,15 +36,15 @@ model User {
   @@map("users")
 }
 
-enum UserRole {
+enum Role {
   USER
   ADMIN
 }
 
 // Meta Ads Manager integration
 model MetaAccount {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   metaAccountId     String              @unique
   accessToken       String
@@ -62,8 +62,8 @@ model MetaAccount {
 }
 
 model AdAccount {
-  id                String              @id @default(uuid())
-  metaAccountId     String
+  id                Int              @id @default(autoincrement())
+  metaAccountId     Int
   metaAccount       MetaAccount         @relation(fields: [metaAccountId], references: [id], onDelete: Cascade)
   adAccountId       String              @unique // The Ad Account ID from Meta
   name              String
@@ -79,12 +79,12 @@ model AdAccount {
 
 // Campaign structure
 model Campaign {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  metaAccountId     String?
+  metaAccountId     Int?
   metaAccount       MetaAccount?        @relation(fields: [metaAccountId], references: [id], onDelete: SetNull)
-  adAccountId       String?
+  adAccountId       Int?
   adAccount         AdAccount?          @relation(fields: [adAccountId], references: [id], onDelete: SetNull)
   campaignId        String?             // Meta Campaign ID
   name              String
@@ -99,9 +99,9 @@ model Campaign {
   adSets            AdSet[]
   tags              TagsOnCampaigns[]
   metrics           CampaignMetrics[]
-  clinicId          String?
+  clinicId          Int?
   clinic            Clinic?             @relation(fields: [clinicId], references: [id], onDelete: SetNull)
-  productId         String?
+  productId         Int?
   product           Product?            @relation(fields: [productId], references: [id], onDelete: SetNull)
 
   @@map("campaigns")
@@ -121,8 +121,8 @@ enum BudgetType {
 }
 
 model CampaignMetrics {
-  id                String              @id @default(uuid())
-  campaignId        String
+  id                Int              @id @default(autoincrement())
+  campaignId        Int
   campaign          Campaign            @relation(fields: [campaignId], references: [id], onDelete: Cascade)
   date              DateTime
   impressions       Int                 @default(0)
@@ -141,12 +141,12 @@ model CampaignMetrics {
 }
 
 model AdSet {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  campaignId        String
+  campaignId        Int
   campaign          Campaign            @relation(fields: [campaignId], references: [id], onDelete: Cascade)
-  metaAccountId     String?
+  metaAccountId     Int?
   metaAccount       MetaAccount?        @relation(fields: [metaAccountId], references: [id], onDelete: SetNull)
   adSetId           String?             // Meta AdSet ID
   name              String
@@ -174,8 +174,8 @@ enum AdSetStatus {
 }
 
 model AdSetMetrics {
-  id                String              @id @default(uuid())
-  adSetId           String
+  id                Int              @id @default(autoincrement())
+  adSetId           Int
   adSet             AdSet               @relation(fields: [adSetId], references: [id], onDelete: Cascade)
   date              DateTime
   impressions       Int                 @default(0)
@@ -194,12 +194,12 @@ model AdSetMetrics {
 }
 
 model Ad {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  adSetId           String
+  adSetId           Int
   adSet             AdSet               @relation(fields: [adSetId], references: [id], onDelete: Cascade)
-  metaAccountId     String?
+  metaAccountId     Int?
   metaAccount       MetaAccount?        @relation(fields: [metaAccountId], references: [id], onDelete: SetNull)
   adId              String?             // Meta Ad ID
   name              String
@@ -238,8 +238,8 @@ enum CreativeType {
 }
 
 model AdMetrics {
-  id                String              @id @default(uuid())
-  adId              String
+  id                Int              @id @default(autoincrement())
+  adId              Int
   ad                Ad                  @relation(fields: [adId], references: [id], onDelete: Cascade)
   date              DateTime
   impressions       Int                 @default(0)
@@ -263,10 +263,10 @@ model AdMetrics {
 
 // Scheduling and Planning
 model Schedule {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  adId              String?
+  adId              Int?
   ad                Ad?                 @relation(fields: [adId], references: [id], onDelete: SetNull)
   title             String
   startDate         DateTime
@@ -274,9 +274,9 @@ model Schedule {
   status            ScheduleStatus
   priority          SchedulePriority    @default(STANDARD)
   category          ScheduleCategory?
-  clinicId          String?
+  clinicId          Int?
   clinic            Clinic?             @relation(fields: [clinicId], references: [id], onDelete: SetNull)
-  productId         String?
+  productId         Int?
   product           Product?            @relation(fields: [productId], references: [id], onDelete: SetNull)
   recurrence        RecurrencePattern?
   notes             String?
@@ -313,7 +313,7 @@ enum RecurrencePattern {
 
 // Ads Planner
 model AdsPlanner {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   name              String              // Campaign Name
   description       String?
   objective         CampaignObjective   // Campaign Objective
@@ -362,8 +362,8 @@ enum GenderTarget {
 }
 
 model PlannerItem {
-  id                String              @id @default(uuid())
-  plannerId         String
+  id                Int              @id @default(autoincrement())
+  plannerId         Int
   planner           AdsPlanner          @relation(fields: [plannerId], references: [id], onDelete: Cascade)
   title             String
   description       String?
@@ -389,8 +389,8 @@ enum PlannerItemStatus {
 
 // Social Media Metrics
 model SocialMediaAccount {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   platform          PlatformType
   accountName       String
@@ -421,8 +421,8 @@ enum PlatformType {
 }
 
 model PlatformMetrics {
-  id                String              @id @default(uuid())
-  accountId         String
+  id                Int              @id @default(autoincrement())
+  accountId         Int
   account           SocialMediaAccount  @relation(fields: [accountId], references: [id], onDelete: Cascade)
   date              DateTime
   followers         Int                 @default(0)
@@ -440,8 +440,8 @@ model PlatformMetrics {
 }
 
 model EngagementMetrics {
-  id                String              @id @default(uuid())
-  accountId         String
+  id                Int              @id @default(autoincrement())
+  accountId         Int
   account           SocialMediaAccount  @relation(fields: [accountId], references: [id], onDelete: Cascade)
   date              DateTime
   likes             Int                 @default(0)
@@ -458,10 +458,10 @@ model EngagementMetrics {
 }
 
 model Influencer {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accountId         String
+  accountId         Int
   account           SocialMediaAccount  @relation(fields: [accountId], references: [id], onDelete: Cascade)
   name              String
   contactInfo       String?
@@ -487,8 +487,8 @@ enum InfluencerStatus {
 }
 
 model InfluencerCampaigns {
-  id                String              @id @default(uuid())
-  influencerId      String
+  id                Int              @id @default(autoincrement())
+  influencerId      Int
   influencer        Influencer          @relation(fields: [influencerId], references: [id], onDelete: Cascade)
   name              String
   startDate         DateTime
@@ -511,8 +511,8 @@ enum InfluencerCampaignStatus {
 
 // Models for Clinic and Product
 model Clinic {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   name              String
   address           String?
@@ -534,8 +534,8 @@ model Clinic {
 }
 
 model Product {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   name              String
   description       String?
@@ -554,7 +554,7 @@ model Product {
 }
 
 model Income {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   source            String
   amount            Float
   description       String?
@@ -574,8 +574,8 @@ enum IncomeCategory {
 }
 
 model Payment {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   amount            Float
   currency          String              @default("USD")
@@ -584,7 +584,7 @@ model Payment {
   description       String?
   transactionId     String?
   receiptUrl        String?
-  invoiceId         String?
+  invoiceId         Int?
   invoice           Invoice?            @relation(fields: [invoiceId], references: [id])
   date              DateTime            @default(now())
   createdAt         DateTime            @default(now())
@@ -609,8 +609,8 @@ enum PaymentMethod {
 }
 
 model Invoice {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   invoiceNumber     String              @unique
   amount            Float
@@ -636,7 +636,7 @@ enum InvoiceStatus {
 
 // ROAS Tracking
 model ROASMetrics {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   date              DateTime
   adSpend           Float               @default(0)
   revenue           Float               @default(0)
@@ -649,7 +649,7 @@ model ROASMetrics {
 
 // Conversion Tracking
 model ConversionMetrics {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   date              DateTime
   source            String?
   medium            String?
@@ -668,7 +668,7 @@ model ConversionMetrics {
 
 // Tags for categorization
 model Tag {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   name              String              @unique
   color             String?
   campaigns         TagsOnCampaigns[]
@@ -679,9 +679,9 @@ model Tag {
 }
 
 model TagsOnCampaigns {
-  tagId             String
+  tagId             Int
   tag               Tag                 @relation(fields: [tagId], references: [id], onDelete: Cascade)
-  campaignId        String
+  campaignId        Int
   campaign          Campaign            @relation(fields: [campaignId], references: [id], onDelete: Cascade)
   assignedAt        DateTime            @default(now())
 
@@ -691,8 +691,8 @@ model TagsOnCampaigns {
 
 // Notifications
 model Notification {
-  id                String              @id @default(uuid())
-  userId            String
+  id                Int              @id @default(autoincrement())
+  userId            Int
   user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
   title             String
   message           String
@@ -713,7 +713,7 @@ enum NotificationType {
 
 // System settings
 model Setting {
-  id                String              @id @default(uuid())
+  id                Int              @id @default(autoincrement())
   key               String              @unique
   value             String
   description       String?
