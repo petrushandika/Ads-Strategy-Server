@@ -14,10 +14,11 @@ datasource db {
 // User and authentication models
 model User {
   id                Int              @id @default(autoincrement())
-  email             String              @unique
-  password          String
   name              String
+  email             String              @unique
+  password          String?
   roles             Role[]              @default([USER])
+  googleId          String?             @unique
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
   metaAccounts      MetaAccount[]

@@ -98,3 +98,144 @@
 {"level":"info","message":"GET /api/auth/login","service":"user-service","timestamp":"2025-06-09 17:26:41"}
 {"level":"warn","message":"404 - Route Not Found - /api/auth/login - GET - ::1","service":"user-service","timestamp":"2025-06-09 17:26:41"}
 {"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-09 17:29:29"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-09 17:31:26"}
+{"level":"info","message":"GET /api/auth/login","service":"user-service","timestamp":"2025-06-09 17:32:05"}
+{"level":"warn","message":"404 - Route Not Found - /api/auth/login - GET - ::1","service":"user-service","timestamp":"2025-06-09 17:32:05"}
+{"level":"info","message":"POST /api/auth/login","service":"user-service","timestamp":"2025-06-09 17:32:09"}
+{"level":"info","message":"Login endpoint called","service":"user-service","timestamp":"2025-06-09 17:32:09"}
+{"level":"info","message":"Login attempt for user: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-09 17:32:09"}
+{"level":"info","message":"User logged in successfully: 3","service":"user-service","timestamp":"2025-06-09 17:32:10"}
+{"level":"info","message":"User logged in successfully: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-09 17:32:10"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 10:34:20"}
+{"level":"info","message":"POST /api/auth/login","service":"user-service","timestamp":"2025-06-19 10:36:33"}
+{"level":"info","message":"Login endpoint called","service":"user-service","timestamp":"2025-06-19 10:36:33"}
+{"level":"info","message":"Login attempt for user: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 10:36:33"}
+{"level":"info","message":"User logged in successfully: 3","service":"user-service","timestamp":"2025-06-19 10:36:33"}
+{"level":"info","message":"User logged in successfully: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 10:36:33"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:25:57"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:26:08"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:28:40"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:28:54"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:52:12"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:52:16"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 13:58:57"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:01:07"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:01:54"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:02:08"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:02:13"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:02:42"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:03:09"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:04:00"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:04:19"}
+{"level":"info","message":"Server is running on port 3001","service":"user-service","timestamp":"2025-06-19 14:05:06"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:05:19"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:06:11"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:06:43"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:06:50"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:07:21"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:08:07"}
+{"level":"info","message":"POST /api/auth/register","service":"user-service","timestamp":"2025-06-19 14:08:34"}
+{"level":"info","message":"Register endpoint called","service":"user-service","timestamp":"2025-06-19 14:08:34"}
+{"level":"info","message":"Attempting to register user with email: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 14:08:34"}
+{"level":"info","message":"User registered successfully: 3","service":"user-service","timestamp":"2025-06-19 14:08:34"}
+{"level":"info","message":"User registered successfully: 3","service":"user-service","timestamp":"2025-06-19 14:08:34"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:09:14"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:09:14"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:09:22"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:09:22"}
+{"level":"info","message":"POST /api/auth/login","service":"user-service","timestamp":"2025-06-19 14:09:48"}
+{"level":"info","message":"Login endpoint called","service":"user-service","timestamp":"2025-06-19 14:09:48"}
+{"level":"info","message":"Login attempt for user: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 14:09:48"}
+{"level":"info","message":"User logged in successfully: 3","service":"user-service","timestamp":"2025-06-19 14:09:48"}
+{"level":"info","message":"User logged in successfully: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 14:09:48"}
+{"level":"info","message":"GET /api/users/me","service":"user-service","timestamp":"2025-06-19 14:09:59"}
+{"level":"info","message":"User 3 authenticated successfully","service":"user-service","timestamp":"2025-06-19 14:09:59"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:10:04"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:10:04"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:12:19"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:12:19"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:13:55"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:14:26"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:14:26"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:14:28"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:14:28"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:15:20"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:17:54"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:18:08"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:18:11"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:18:19"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:18:33"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:18:49"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:18:58"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:19:02"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:19:05"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:19:11"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:19:30"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:19:38"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:20:07"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:20:25"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:21:24"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:21:38"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:21:43"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:21:52"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:22:41"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:22:50"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:23:06"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:23:06"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:24:04"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:04"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__6deccba8_dc5e_4cd5_9847_ced679c34ab6__0","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__6deccba8_dc5e_4cd5_9847_ced679c34ab6__0 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__d34a5b65_cf12_4261_bead_bd116a1c1bd9__1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__d34a5b65_cf12_4261_bead_bd116a1c1bd9__1 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__c4efc68f_e332_4730_9d2a_f19e1516722d__2","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__c4efc68f_e332_4730_9d2a_f19e1516722d__2 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__45321278_798d_4aa1_97e8_6c470587af11__3","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__45321278_798d_4aa1_97e8_6c470587af11__3 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__92757b4b_b64d_425b_bddc_6c2a761a8e64__4","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__92757b4b_b64d_425b_bddc_6c2a761a8e64__4 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__e3c394d0_220b_43ea_b0c8_88d5b9f6f7ff__5","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__e3c394d0_220b_43ea_b0c8_88d5b9f6f7ff__5 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:06"}
+{"level":"info","message":"GET /api/auth/google/callback","service":"user-service","timestamp":"2025-06-19 14:24:23"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google/callback - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:24:23"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:26:41"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:26:41"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:28:37"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:28:37"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:28:39"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:28:39"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:29:32"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:32"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__1913f4b7_c566_4111_9f44_03f9dd4cbab6__0","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__1913f4b7_c566_4111_9f44_03f9dd4cbab6__0 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__e96b556c_bc6c_4287_97ed_a4236cb66d20__1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__e96b556c_bc6c_4287_97ed_a4236cb66d20__1 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__b5265344_1a40_4982_8fe9_659226221366__2","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__b5265344_1a40_4982_8fe9_659226221366__2 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__cae27d4d_c896_4945_a057_9eeb81f1ee3e__3","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__cae27d4d_c896_4945_a057_9eeb81f1ee3e__3 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__b6706d2a_13dd_49a5_b49d_83ef07d1c2f7__4","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__b6706d2a_13dd_49a5_b49d_83ef07d1c2f7__4 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"info","message":"GET /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__3620b600_d933_4d8b_99a9_90a41178c7ed__5","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"warn","message":"404 - Route Not Found - /hybridaction/zybTrackerStatisticsAction?data=%7B%7D&__callback__=__cb__zybTrackerStatisticsAction__3620b600_d933_4d8b_99a9_90a41178c7ed__5 - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:29:34"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:32:14"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:32:17"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:32:45"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:32:51"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:32:51"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:32:53"}
+{"level":"error","message":"500 - Unknown authentication strategy \"google\" - /api/auth/google - GET - ::1","service":"user-service","timestamp":"2025-06-19 14:32:53"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:33:02"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:33:20"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:37:47"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:37:57"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:38:04"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:40:29"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:40:30"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:43:44"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:43:44"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:47:33"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:48:31"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:48:39"}
+{"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:48:40"}
+{"level":"info","message":"GET /api/auth/google/callback?code=4%2F0AUJR-x5FJ4BvkUYj6RcTccVueLX01662RdLhdzVmxtKyMZOkb1pYpRAInXXe1Gmfdlk0mw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent","service":"user-service","timestamp":"2025-06-19 14:48:49"}
