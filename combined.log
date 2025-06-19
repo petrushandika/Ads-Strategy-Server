@@ -239,3 +239,55 @@
 {"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:48:39"}
 {"level":"info","message":"GET /api/auth/google","service":"user-service","timestamp":"2025-06-19 14:48:40"}
 {"level":"info","message":"GET /api/auth/google/callback?code=4%2F0AUJR-x5FJ4BvkUYj6RcTccVueLX01662RdLhdzVmxtKyMZOkb1pYpRAInXXe1Gmfdlk0mw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent","service":"user-service","timestamp":"2025-06-19 14:48:49"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:55:40"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:59:05"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:59:13"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:59:51"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 14:59:57"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 15:00:49"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 15:03:11"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 15:10:38"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:17:27"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:17:39"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:25:14"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:25:21"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:25:31"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:25:44"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:25:50"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:32:08"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:32:14"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:32:23"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:32:46"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:40:23"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:40:31"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:40:39"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:40:48"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:44:09"}
+{"level":"info","message":"Email server is ready to take our messages","service":"user-service","timestamp":"2025-06-19 16:44:09"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:44:16"}
+{"level":"info","message":"Email server is ready to take our messages","service":"user-service","timestamp":"2025-06-19 16:44:16"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:44:45"}
+{"level":"info","message":"Email server is ready to take our messages","service":"user-service","timestamp":"2025-06-19 16:44:46"}
+{"level":"info","message":"Server is running on port 8000","service":"user-service","timestamp":"2025-06-19 16:44:53"}
+{"level":"info","message":"Email server is ready to take our messages","service":"user-service","timestamp":"2025-06-19 16:44:54"}
+{"level":"info","message":"GET /api/auth/forgot-password","service":"user-service","timestamp":"2025-06-19 16:44:54"}
+{"level":"warn","message":"404 - Route Not Found - /api/auth/forgot-password - GET - ::1","service":"user-service","timestamp":"2025-06-19 16:44:54"}
+{"level":"info","message":"GET /api/auth/forgot-password","service":"user-service","timestamp":"2025-06-19 16:45:36"}
+{"level":"warn","message":"404 - Route Not Found - /api/auth/forgot-password - GET - ::1","service":"user-service","timestamp":"2025-06-19 16:45:36"}
+{"level":"info","message":"GET /auth/forgot-password","service":"user-service","timestamp":"2025-06-19 16:45:58"}
+{"level":"warn","message":"404 - Route Not Found - /auth/forgot-password - GET - ::1","service":"user-service","timestamp":"2025-06-19 16:45:58"}
+{"level":"info","message":"GET /api/auth/forgot-password","service":"user-service","timestamp":"2025-06-19 16:46:35"}
+{"level":"warn","message":"404 - Route Not Found - /api/auth/forgot-password - GET - ::1","service":"user-service","timestamp":"2025-06-19 16:46:35"}
+{"level":"info","message":"POST /api/auth/forgot-password","service":"user-service","timestamp":"2025-06-19 16:47:30"}
+{"level":"info","message":"Forgot password endpoint called","service":"user-service","timestamp":"2025-06-19 16:47:30"}
+{"level":"info","message":"Forgot password request for email: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 16:47:30"}
+{"0":"<","1":"4","10":"3","11":"3","12":"f","13":"a","14":"-","15":"e","16":"f","17":"a","18":"d","19":"-","2":"2","20":"7","21":"a","22":"0","23":"9","24":"-","25":"a","26":"0","27":"e","28":"a","29":"5","3":"6","30":"4","31":"a","32":"c","33":"2","34":"1","35":"9","36":"b","37":"@","38":"g","39":"m","4":"b","40":"a","41":"i","42":"l","43":".","44":"c","45":"o","46":"m","47":">","5":"9","6":"f","7":"d","8":"7","9":"-","level":"info","message":"Password reset email sent successfully to petrushandikasinaga@gmail.com:","service":"user-service","timestamp":"2025-06-19 16:47:34"}
+{"level":"info","message":"Password reset email sent successfully to: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 16:47:34"}
+{"level":"info","message":"Forgot password request processed for: petrushandikasinaga@gmail.com","service":"user-service","timestamp":"2025-06-19 16:47:34"}
+{"level":"info","message":"POST /api/auth/reset-password","service":"user-service","timestamp":"2025-06-19 16:49:53"}
+{"level":"info","message":"Reset password endpoint called","service":"user-service","timestamp":"2025-06-19 16:49:53"}
+{"level":"info","message":"Password reset attempt with token: e2b33b67f0...","service":"user-service","timestamp":"2025-06-19 16:49:53"}
+{"0":"<","1":"0","10":"7","11":"e","12":"b","13":"4","14":"-","15":"a","16":"a","17":"c","18":"1","19":"-","2":"f","20":"2","21":"2","22":"9","23":"7","24":"-","25":"7","26":"a","27":"2","28":"e","29":"3","3":"1","30":"3","31":"e","32":"4","33":"6","34":"8","35":"3","36":"3","37":"@","38":"g","39":"m","4":"e","40":"a","41":"i","42":"l","43":".","44":"c","45":"o","46":"m","47":">","5":"2","6":"e","7":"f","8":"3","9":"-","level":"info","message":"Password reset success email sent to petrushandikasinaga@gmail.com:","service":"user-service","timestamp":"2025-06-19 16:49:55"}
+{"level":"info","message":"Password reset successful for user: 3","service":"user-service","timestamp":"2025-06-19 16:49:55"}
+{"level":"info","message":"Password reset completed successfully for user: 3","service":"user-service","timestamp":"2025-06-19 16:49:55"}
+{"level":"info","message":"Password reset completed successfully","service":"user-service","timestamp":"2025-06-19 16:49:55"}

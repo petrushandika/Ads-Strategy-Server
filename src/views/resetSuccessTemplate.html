@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Reset Successful</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f6f9fc;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .header {
+        background: linear-gradient(135deg, #11cb6a 0%, #25fc75 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 28px;
+      }
+      .content {
+        padding: 30px 40px;
+        color: #333;
+      }
+      .content p {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      .footer {
+        background-color: #f6f9fc;
+        padding: 20px;
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+      }
+      .footer a {
+        color: #11cb6a;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Password Changed Successfully</h1>
+      </div>
+      <div class="content">
+        <h2>Hello, {{userName}}!</h2>
+        <p>
+          This is a confirmation that the password for your account has been
+          successfully changed. Your account is now secure with your new
+          password.
+        </p>
+        <p>
+          If you did not make this change, please contact our support team
+          immediately by visiting our website.
+        </p>
+        <p>Thank you for helping us keep your account secure.</p>
+        <p>Best regards,<br />The {{companyName}} Team</p>
+      </div>
+      <div class="footer">
+        <p>&copy; {{year}} {{companyName}}. All rights reserved.</p>
+        <p>
+          For any security concerns, please visit our
+          <a href="{{supportUrl}}">Support Center</a>.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
